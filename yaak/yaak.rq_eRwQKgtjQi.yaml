@@ -1,0 +1,29 @@
+type: http_request
+model: http_request
+id: rq_eRwQKgtjQi
+createdAt: 2025-07-16T02:22:47.446374477
+updatedAt: 2025-07-16T02:38:32.498743798
+workspaceId: wk_h5ZmgvKoMK
+folderId: fl_hA8qD9gPsX
+authentication: {}
+authenticationType: null
+body:
+  text: |-
+    {
+      "email": "${[ username ]}",
+      "password": "${[ password ]}",
+      "terms": true,
+      "name": "vinicius"
+    }
+bodyType: application/json
+description: ""
+headers:
+  - enabled: true
+    name: Content-Type
+    value: application/json
+    id: stphPFuKaC
+method: POST
+name: Sign up
+sortPriority: 0.0
+url: ${[ host ]}/auth/sign-up
+urlParameters: []

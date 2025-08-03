@@ -1,0 +1,13 @@
+type: folder
+model: folder
+id: fl_vqrwjxgMbK
+createdAt: 2025-07-16T02:28:05.234739798
+updatedAt: 2025-07-16T03:12:42.576319995
+workspaceId: wk_h5ZmgvKoMK
+folderId: null
+authentication: {}
+authenticationType: null
+description: ""
+headers: []
+name: tags
+sortPriority: 4000.0

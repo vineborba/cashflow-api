@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_UD5arm5G3C
+createdAt: 2025-07-16T02:19:55.103414107
+updatedAt: 2025-07-16T02:38:28.598060731
+workspaceId: wk_h5ZmgvKoMK
+folderId: fl_hA8qD9gPsX
+authentication: {}
+authenticationType: null
+body:
+  text: |-
+    {
+      "email": "${[ username ]}",
+      "password": "${[ password ]}"
+    }
+bodyType: application/json
+description: ""
+headers:
+  - enabled: true
+    name: Content-Type
+    value: application/json
+    id: VfaIpAE2pc
+method: POST
+name: Sign in
+sortPriority: 1000.0
+url: ${[ host ]}/auth/sign-in
+urlParameters: []

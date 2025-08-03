@@ -1,0 +1,29 @@
+type: http_request
+model: http_request
+id: rq_PLCeYY9VSd
+createdAt: 2025-07-16T03:07:09.846475662
+updatedAt: 2025-07-16T03:10:40.631463056
+workspaceId: wk_h5ZmgvKoMK
+folderId: fl_DtTCGWPE8h
+authentication: {}
+authenticationType: null
+body:
+  text: |-
+    {
+      "value": 2000,
+      "description": "Cabelo cortado rec",
+      "date": "2025-07-16T03:09:54.782Z",
+      "recurring": true
+    }
+bodyType: application/json
+description: ""
+headers:
+  - enabled: true
+    name: Content-Type
+    value: application/json
+    id: iIjVdR04GN
+method: POST
+name: Create expense
+sortPriority: -0.0001
+url: ${[ host ]}/expenses
+urlParameters: []

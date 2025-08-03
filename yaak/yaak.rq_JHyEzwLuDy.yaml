@@ -1,0 +1,29 @@
+type: http_request
+model: http_request
+id: rq_JHyEzwLuDy
+createdAt: 2025-07-16T03:10:52.224960603
+updatedAt: 2025-07-16T03:11:16.075059510
+workspaceId: wk_h5ZmgvKoMK
+folderId: fl_bnt4owzWzA
+authentication: {}
+authenticationType: null
+body:
+  text: |-
+    {
+      "value": 2000,
+      "description": "Cabelo cortado ",
+      "date": "2025-07-16T03:09:54.782Z",
+      "recurring": true
+    }
+bodyType: application/json
+description: ""
+headers:
+  - enabled: true
+    name: Content-Type
+    value: application/json
+    id: iIjVdR04GN
+method: POST
+name: Create income
+sortPriority: 1000.0
+url: ${[ host ]}/incomes
+urlParameters: []

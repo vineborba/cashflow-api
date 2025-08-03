@@ -1,0 +1,13 @@
+type: folder
+model: folder
+id: fl_bnt4owzWzA
+createdAt: 2025-07-16T03:03:31.798853829
+updatedAt: 2025-07-16T03:12:42.570582578
+workspaceId: wk_h5ZmgvKoMK
+folderId: null
+authentication: {}
+authenticationType: null
+description: ""
+headers: []
+name: incomes
+sortPriority: 3000.0

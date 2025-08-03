@@ -1,0 +1,13 @@
+type: folder
+model: folder
+id: fl_RTVBp4UFtj
+createdAt: 2025-07-16T03:18:19.952979651
+updatedAt: 2025-07-16T03:18:19.952981394
+workspaceId: wk_h5ZmgvKoMK
+folderId: null
+authentication: {}
+authenticationType: null
+description: ""
+headers: []
+name: budgets
+sortPriority: 1500.001

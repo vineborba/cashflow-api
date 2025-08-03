@@ -1,0 +1,32 @@
+import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { createInsertSchema } from "drizzle-valibot";
+import * as v from "valibot";
+
+import { users } from "./user.schema";
+import { idField, timestamps } from "./helpers";
+
+export const incomes = sqliteTable("incomes", {
+  ...idField,
+  value: int().notNull(),
+  received: int({ mode: "boolean" }).notNull().default(true),
+  description: text({ length: 120 }).notNull(),
+  observation: text({ length: 180 }),
+  userId: text()
+    .notNull()
+    .references(() => users.id),
+  date: int({ mode: "timestamp" }).notNull(),
+  ...timestamps,
+});
+
+export const insertIncomeSchema = createInsertSchema(incomes, {
+  value: (schema) =>
+    v.pipe(schema, v.minValue(1, "Precisa ser maior que zero")),
+  description: (schema) =>
+    v.pipe(
+      schema,
+      v.minLength(5, "Deve conter pelo menos 5 caracteres"),
+      v.maxLength(120, "Deve conter no máximo 120 caracteres"),
+    ),
+  observation: (schema) =>
+    v.pipe(schema, v.maxLength(180, "Deve conter no máximo 180 caracteres")),
+});
