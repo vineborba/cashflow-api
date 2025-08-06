@@ -8,14 +8,16 @@ import type { AppEnvironment, ServerContext } from "./types/global";
 import { connectDatabase } from "./db/client";
 import { EmailClient } from "./lib/email/client";
 import {
+  accountsRouter,
   authRouter,
+  banksRouter,
   budgetsRouter,
   expensesRouter,
   healthRouter,
   incomesRouter,
   tagsRouter,
   usersRouter,
-} from "./modules/routers";
+} from "./modules";
 
 export class Application {
   private app: Hono<ServerContext>;
@@ -98,9 +100,11 @@ export class Application {
     });
 
     this.app.route("/users", usersRouter);
+    this.app.route("/accounts", accountsRouter);
     this.app.route("/incomes", incomesRouter);
     this.app.route("/expenses", expensesRouter);
     this.app.route("/budgets", budgetsRouter);
     this.app.route("/tags", tagsRouter);
+    this.app.route("/banks", banksRouter);
   }
 }

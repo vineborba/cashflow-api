@@ -3,7 +3,7 @@ import { createClient } from "@libsql/client";
 
 import type { Settings } from "@app/types/global";
 
-import * as schema from "./schemas/schema";
+import * as schema from "./schemas";
 
 export function connectDatabase(settings: Settings) {
   const client = createClient({
