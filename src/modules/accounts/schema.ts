@@ -1,5 +1,10 @@
-import * as v from 'valibot'
+import * as v from "valibot";
 
-import { insertAccountSchema } from '@app/db/schemas/accounts.schema';
+import { insertAccountSchema } from "@app/db/schemas/accounts.schema";
 
-export const newAccountSchema = v.pick(insertAccountSchema, ['bankCode', 'balance', 'description', 'type']);
+export const newAccountSchema = v.pick(insertAccountSchema, [
+  "bankCode",
+  "balance",
+  "description",
+  "type",
+]);

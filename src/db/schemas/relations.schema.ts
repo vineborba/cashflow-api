@@ -22,11 +22,11 @@ export const usersRelations = relations(users, ({ many }) => ({
 export const accountsRelation = relations(accounts, ({ one, many }) => ({
   owner: one(users, {
     fields: [accounts.userId],
-    references: [users.id]
+    references: [users.id],
   }),
   expenses: many(expenses),
   incomes: many(incomes),
-}))
+}));
 
 export const expensesRelations = relations(expenses, ({ one, many }) => ({
   user: one(users, {
@@ -37,7 +37,7 @@ export const expensesRelations = relations(expenses, ({ one, many }) => ({
   account: one(accounts, {
     fields: [expenses.accountId],
     references: [accounts.id],
-  })
+  }),
 }));
 
 export const incomesRelations = relations(incomes, ({ one, many }) => ({
@@ -49,7 +49,7 @@ export const incomesRelations = relations(incomes, ({ one, many }) => ({
   account: one(accounts, {
     fields: [incomes.accountId],
     references: [accounts.id],
-  })
+  }),
 }));
 
 export const budgetsRelations = relations(budgets, ({ one, many }) => ({

@@ -16,7 +16,9 @@ export const expenses = sqliteTable("expenses", {
   userId: text()
     .notNull()
     .references(() => users.id),
-  accountId: text().notNull().references(() => accounts.id),
+  accountId: text()
+    .notNull()
+    .references(() => accounts.id),
   ...timestamps,
 });
 

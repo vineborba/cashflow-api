@@ -83,13 +83,9 @@
         "accounts_user_id_users_id_fk": {
           "name": "accounts_user_id_users_id_fk",
           "tableFrom": "accounts",
-          "columnsFrom": [
-            "user_id"
-          ],
+          "columnsFrom": ["user_id"],
           "tableTo": "users",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
@@ -180,13 +176,9 @@
         "budgets_user_id_users_id_fk": {
           "name": "budgets_user_id_users_id_fk",
           "tableFrom": "budgets",
-          "columnsFrom": [
-            "user_id"
-          ],
+          "columnsFrom": ["user_id"],
           "tableTo": "users",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
@@ -282,26 +274,18 @@
         "expenses_user_id_users_id_fk": {
           "name": "expenses_user_id_users_id_fk",
           "tableFrom": "expenses",
-          "columnsFrom": [
-            "user_id"
-          ],
+          "columnsFrom": ["user_id"],
           "tableTo": "users",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         },
         "expenses_account_id_accounts_id_fk": {
           "name": "expenses_account_id_accounts_id_fk",
           "tableFrom": "expenses",
-          "columnsFrom": [
-            "account_id"
-          ],
+          "columnsFrom": ["account_id"],
           "tableTo": "accounts",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
@@ -397,26 +381,18 @@
         "incomes_user_id_users_id_fk": {
           "name": "incomes_user_id_users_id_fk",
           "tableFrom": "incomes",
-          "columnsFrom": [
-            "user_id"
-          ],
+          "columnsFrom": ["user_id"],
           "tableTo": "users",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         },
         "incomes_account_id_accounts_id_fk": {
           "name": "incomes_account_id_accounts_id_fk",
           "tableFrom": "incomes",
-          "columnsFrom": [
-            "account_id"
-          ],
+          "columnsFrom": ["account_id"],
           "tableTo": "accounts",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
@@ -448,36 +424,25 @@
         "tags_to_budgets_tag_id_tags_id_fk": {
           "name": "tags_to_budgets_tag_id_tags_id_fk",
           "tableFrom": "tags_to_budgets",
-          "columnsFrom": [
-            "tag_id"
-          ],
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         },
         "tags_to_budgets_budget_id_budgets_id_fk": {
           "name": "tags_to_budgets_budget_id_budgets_id_fk",
           "tableFrom": "tags_to_budgets",
-          "columnsFrom": [
-            "budget_id"
-          ],
+          "columnsFrom": ["budget_id"],
           "tableTo": "budgets",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
         "tags_to_budgets_budget_id_tag_id_pk": {
-          "columns": [
-            "budget_id",
-            "tag_id"
-          ],
+          "columns": ["budget_id", "tag_id"],
           "name": "tags_to_budgets_budget_id_tag_id_pk"
         }
       },
@@ -507,36 +472,25 @@
         "tags_to_expenses_tag_id_tags_id_fk": {
           "name": "tags_to_expenses_tag_id_tags_id_fk",
           "tableFrom": "tags_to_expenses",
-          "columnsFrom": [
-            "tag_id"
-          ],
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         },
         "tags_to_expenses_expense_id_expenses_id_fk": {
           "name": "tags_to_expenses_expense_id_expenses_id_fk",
           "tableFrom": "tags_to_expenses",
-          "columnsFrom": [
-            "expense_id"
-          ],
+          "columnsFrom": ["expense_id"],
           "tableTo": "expenses",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
         "tags_to_expenses_expense_id_tag_id_pk": {
-          "columns": [
-            "expense_id",
-            "tag_id"
-          ],
+          "columns": ["expense_id", "tag_id"],
           "name": "tags_to_expenses_expense_id_tag_id_pk"
         }
       },
@@ -566,36 +520,25 @@
         "tags_to_incomes_tag_id_tags_id_fk": {
           "name": "tags_to_incomes_tag_id_tags_id_fk",
           "tableFrom": "tags_to_incomes",
-          "columnsFrom": [
-            "tag_id"
-          ],
+          "columnsFrom": ["tag_id"],
           "tableTo": "tags",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         },
         "tags_to_incomes_income_id_incomes_id_fk": {
           "name": "tags_to_incomes_income_id_incomes_id_fk",
           "tableFrom": "tags_to_incomes",
-          "columnsFrom": [
-            "income_id"
-          ],
+          "columnsFrom": ["income_id"],
           "tableTo": "incomes",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
         "tags_to_incomes_income_id_tag_id_pk": {
-          "columns": [
-            "income_id",
-            "tag_id"
-          ],
+          "columns": ["income_id", "tag_id"],
           "name": "tags_to_incomes_income_id_tag_id_pk"
         }
       },
@@ -653,13 +596,9 @@
         "tags_user_id_users_id_fk": {
           "name": "tags_user_id_users_id_fk",
           "tableFrom": "tags",
-          "columnsFrom": [
-            "user_id"
-          ],
+          "columnsFrom": ["user_id"],
           "tableTo": "users",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }

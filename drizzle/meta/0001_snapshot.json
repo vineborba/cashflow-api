@@ -84,12 +84,8 @@
           "name": "accounts_user_id_users_id_fk",
           "tableFrom": "accounts",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -181,12 +177,8 @@
           "name": "budgets_user_id_users_id_fk",
           "tableFrom": "budgets",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -283,12 +275,8 @@
           "name": "expenses_user_id_users_id_fk",
           "tableFrom": "expenses",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -296,12 +284,8 @@
           "name": "expenses_account_id_accounts_id_fk",
           "tableFrom": "expenses",
           "tableTo": "accounts",
-          "columnsFrom": [
-            "account_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["account_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -398,12 +382,8 @@
           "name": "incomes_user_id_users_id_fk",
           "tableFrom": "incomes",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -411,12 +391,8 @@
           "name": "incomes_account_id_accounts_id_fk",
           "tableFrom": "incomes",
           "tableTo": "accounts",
-          "columnsFrom": [
-            "account_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["account_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -449,12 +425,8 @@
           "name": "tags_to_budgets_tag_id_tags_id_fk",
           "tableFrom": "tags_to_budgets",
           "tableTo": "tags",
-          "columnsFrom": [
-            "tag_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tag_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -462,22 +434,15 @@
           "name": "tags_to_budgets_budget_id_budgets_id_fk",
           "tableFrom": "tags_to_budgets",
           "tableTo": "budgets",
-          "columnsFrom": [
-            "budget_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["budget_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
         "tags_to_budgets_budget_id_tag_id_pk": {
-          "columns": [
-            "budget_id",
-            "tag_id"
-          ],
+          "columns": ["budget_id", "tag_id"],
           "name": "tags_to_budgets_budget_id_tag_id_pk"
         }
       },
@@ -508,12 +473,8 @@
           "name": "tags_to_expenses_tag_id_tags_id_fk",
           "tableFrom": "tags_to_expenses",
           "tableTo": "tags",
-          "columnsFrom": [
-            "tag_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tag_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -521,22 +482,15 @@
           "name": "tags_to_expenses_expense_id_expenses_id_fk",
           "tableFrom": "tags_to_expenses",
           "tableTo": "expenses",
-          "columnsFrom": [
-            "expense_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["expense_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
         "tags_to_expenses_expense_id_tag_id_pk": {
-          "columns": [
-            "expense_id",
-            "tag_id"
-          ],
+          "columns": ["expense_id", "tag_id"],
           "name": "tags_to_expenses_expense_id_tag_id_pk"
         }
       },
@@ -567,12 +521,8 @@
           "name": "tags_to_incomes_tag_id_tags_id_fk",
           "tableFrom": "tags_to_incomes",
           "tableTo": "tags",
-          "columnsFrom": [
-            "tag_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tag_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -580,22 +530,15 @@
           "name": "tags_to_incomes_income_id_incomes_id_fk",
           "tableFrom": "tags_to_incomes",
           "tableTo": "incomes",
-          "columnsFrom": [
-            "income_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["income_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
         "tags_to_incomes_income_id_tag_id_pk": {
-          "columns": [
-            "income_id",
-            "tag_id"
-          ],
+          "columns": ["income_id", "tag_id"],
           "name": "tags_to_incomes_income_id_tag_id_pk"
         }
       },
@@ -654,12 +597,8 @@
           "name": "tags_user_id_users_id_fk",
           "tableFrom": "tags",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }

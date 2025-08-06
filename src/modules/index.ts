@@ -5,5 +5,5 @@ export { default as healthRouter } from "./health/router";
 export { default as expensesRouter } from "./expenses/router";
 export { default as budgetsRouter } from "./budgets/router";
 export { default as tagsRouter } from "./tags/router";
-export { default as accountsRouter } from './accounts/router';
-export { default as banksRouter } from './banks/router';
+export { default as accountsRouter } from "./accounts/router";
+export { default as banksRouter } from "./banks/router";
