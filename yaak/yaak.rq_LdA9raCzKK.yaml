@@ -1,0 +1,29 @@
+type: http_request
+model: http_request
+id: rq_LdA9raCzKK
+createdAt: 2025-08-06T03:47:23.506327762
+updatedAt: 2025-08-06T03:50:02.542402440
+workspaceId: wk_h5ZmgvKoMK
+folderId: fl_sogUNCHMTq
+authentication: {}
+authenticationType: null
+body:
+  text: |-
+    {
+      "bankCode": "003",
+      "balance": 1000000,
+      "description": "Conta corrente",
+      "type": "Conta corrente"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: AXtVaaHGNV
+method: POST
+name: Create account
+sortPriority: -0.0004
+url: ${[ host ]}/accounts
+urlParameters: []

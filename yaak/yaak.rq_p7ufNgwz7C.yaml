@@ -1,0 +1,26 @@
+type: http_request
+model: http_request
+id: rq_p7ufNgwz7C
+createdAt: 2025-08-06T03:50:10.631795446
+updatedAt: 2025-08-06T03:53:07.180813858
+workspaceId: wk_h5ZmgvKoMK
+folderId: fl_sogUNCHMTq
+authentication: {}
+authenticationType: null
+body: {}
+bodyType: null
+description: ''
+headers: []
+method: DELETE
+name: Delete account
+sortPriority: -0.0005
+url: ${[ host ]}/accounts/:id
+urlParameters:
+- enabled: true
+  name: :id
+  value: 4b490de6-adbb-4d61-8233-b016dd78acc4
+  id: HP7pQEsaYi
+- enabled: true
+  name: ''
+  value: ''
+  id: 9zjBBj9GNH
