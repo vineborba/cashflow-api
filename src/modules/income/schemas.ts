@@ -6,6 +6,7 @@ export const newIncomeSchema = v.object({
   description: insertIncomeSchema.entries.description,
   observation: insertIncomeSchema.entries.observation,
   value: insertIncomeSchema.entries.value,
+  accountId: insertIncomeSchema.entries.accountId,
   date: v.pipe(
     v.string(),
     v.transform((v) => new Date(v)),

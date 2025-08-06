@@ -2,8 +2,9 @@ import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema } from "drizzle-valibot";
 import * as v from "valibot";
 
-import { users } from "./user.schema";
 import { idField, timestamps } from "./helpers";
+import { users } from "./user.schema";
+import { accounts } from "./accounts.schema";
 
 export const expenses = sqliteTable("expenses", {
   ...idField,
@@ -15,6 +16,7 @@ export const expenses = sqliteTable("expenses", {
   userId: text()
     .notNull()
     .references(() => users.id),
+  accountId: text().notNull().references(() => accounts.id),
   ...timestamps,
 });
 

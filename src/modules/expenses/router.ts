@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { vValidator } from "@hono/valibot-validator";
 import { eq } from "drizzle-orm";
 
-import { expenses } from "@app/db/schemas/schema";
+import { expenses } from "@app/db/schemas";
 import type { ServerContext } from "@app/types/global";
 
 import { newExpenseSchema } from "./schemas";

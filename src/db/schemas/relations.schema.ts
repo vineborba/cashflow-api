@@ -10,12 +10,23 @@ import {
   tagsToExpenses,
   tagsToIncomes,
 } from "./tags-to-others.schema";
+import { accounts } from "./accounts.schema";
 
 export const usersRelations = relations(users, ({ many }) => ({
   incomes: many(incomes),
   expenses: many(expenses),
   tags: many(tags),
+  accounts: many(accounts),
 }));
+
+export const accountsRelation = relations(accounts, ({ one, many }) => ({
+  owner: one(users, {
+    fields: [accounts.userId],
+    references: [users.id]
+  }),
+  expenses: many(expenses),
+  incomes: many(incomes),
+}))
 
 export const expensesRelations = relations(expenses, ({ one, many }) => ({
   user: one(users, {
@@ -23,6 +34,10 @@ export const expensesRelations = relations(expenses, ({ one, many }) => ({
     references: [users.id],
   }),
   tags: many(tagsToExpenses),
+  account: one(accounts, {
+    fields: [expenses.accountId],
+    references: [accounts.id],
+  })
 }));
 
 export const incomesRelations = relations(incomes, ({ one, many }) => ({
@@ -31,6 +46,10 @@ export const incomesRelations = relations(incomes, ({ one, many }) => ({
     references: [users.id],
   }),
   tags: many(tagsToIncomes),
+  account: one(accounts, {
+    fields: [incomes.accountId],
+    references: [accounts.id],
+  })
 }));
 
 export const budgetsRelations = relations(budgets, ({ one, many }) => ({

@@ -3,6 +3,7 @@ import { createInsertSchema } from "drizzle-valibot";
 import * as v from "valibot";
 
 import { users } from "./user.schema";
+import { accounts } from "./accounts.schema";
 import { idField, timestamps } from "./helpers";
 
 export const incomes = sqliteTable("incomes", {
@@ -15,6 +16,7 @@ export const incomes = sqliteTable("incomes", {
     .notNull()
     .references(() => users.id),
   date: int({ mode: "timestamp" }).notNull(),
+  accountId: text().notNull().references(() => accounts.id),
   ...timestamps,
 });
 
