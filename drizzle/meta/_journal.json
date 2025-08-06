@@ -15,6 +15,13 @@
       "when": 1754450110088,
       "tag": "0001_shiny_lake",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1754450565795,
+      "tag": "0002_secret_moonstone",
+      "breakpoints": true
     }
   ]
 }
