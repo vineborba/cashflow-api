@@ -8,6 +8,13 @@
       "when": 1754191266295,
       "tag": "0000_spicy_paladin",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1754450110088,
+      "tag": "0001_shiny_lake",
+      "breakpoints": true
     }
   ]
 }
