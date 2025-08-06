@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { vValidator } from "@hono/valibot-validator";
-import { and, eq, getTableColumns, isNull, or } from "drizzle-orm";
+import { and, eq, getTableColumns } from "drizzle-orm";
 
-import { tags } from "@app/db/schemas/schema";
+import { tags } from "@app/db/schemas";
 import type { ServerContext } from "@app/types/global";
 import { idSchema } from "@app/shared/schema";
 

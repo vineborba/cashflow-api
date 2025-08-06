@@ -4,7 +4,7 @@ import { vValidator } from "@hono/valibot-validator";
 import { HTTPException } from "hono/http-exception";
 
 import * as auth from "@app/lib/auth";
-import { users } from "@app/db/schemas/schema";
+import { users } from "@app/db/schemas";
 import type { ServerContext } from "@app/types/global";
 
 import { changePasswordSchema, updateUserInfoSchema } from "./schemas";

@@ -3,7 +3,7 @@ import { vValidator } from "@hono/valibot-validator";
 import { and, eq, inArray } from "drizzle-orm";
 
 import type { ServerContext } from "@app/types/global";
-import { budgets, tags, tagsToBudgets } from "@app/db/schemas/schema";
+import { budgets, tags, tagsToBudgets } from "@app/db/schemas";
 
 import { newBudgetSchema } from "./schema";
 import { InvalidBudgetTags } from "./exception";
