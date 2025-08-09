@@ -2,7 +2,7 @@ type: folder
 model: folder
 id: fl_6oHHQdmb3j
 createdAt: 2025-08-06T03:07:04.318389167
-updatedAt: 2025-08-06T03:07:04.318390284
+updatedAt: 2025-08-06T23:49:35.804359850
 workspaceId: wk_h5ZmgvKoMK
 folderId: null
 authentication: {}
@@ -10,4 +10,4 @@ authenticationType: null
 description: ''
 headers: []
 name: banks
-sortPriority: -1754449600000.0
+sortPriority: 2000.0

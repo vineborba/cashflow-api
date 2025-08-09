@@ -2,7 +2,7 @@ type: folder
 model: folder
 id: fl_RTVBp4UFtj
 createdAt: 2025-07-16T03:18:19.952979651
-updatedAt: 2025-08-06T03:02:17.776694794
+updatedAt: 2025-08-06T23:49:35.810733502
 workspaceId: wk_h5ZmgvKoMK
 folderId: null
 authentication: {}
@@ -10,4 +10,4 @@ authenticationType: null
 description: ''
 headers: []
 name: budgets
-sortPriority: 375.0
+sortPriority: 3000.0

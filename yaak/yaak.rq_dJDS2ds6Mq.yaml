@@ -1,0 +1,18 @@
+type: http_request
+model: http_request
+id: rq_dJDS2ds6Mq
+createdAt: 2025-08-09T00:16:28.077647248
+updatedAt: 2025-08-09T00:16:39.869845240
+workspaceId: wk_h5ZmgvKoMK
+folderId: fl_skLTidmYji
+authentication: {}
+authenticationType: null
+body: {}
+bodyType: null
+description: ''
+headers: []
+method: GET
+name: List transactions
+sortPriority: -0.0002
+url: ${[ host ]}/transactions
+urlParameters: []

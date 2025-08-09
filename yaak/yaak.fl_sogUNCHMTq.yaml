@@ -2,7 +2,7 @@ type: folder
 model: folder
 id: fl_sogUNCHMTq
 createdAt: 2025-08-06T03:46:05.798281625
-updatedAt: 2025-08-06T03:46:05.798282659
+updatedAt: 2025-08-06T23:49:35.794999673
 workspaceId: wk_h5ZmgvKoMK
 folderId: null
 authentication: {}
@@ -10,4 +10,4 @@ authenticationType: null
 description: ''
 headers: []
 name: accounts
-sortPriority: -1754452000000.0
+sortPriority: 1000.0
