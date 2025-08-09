@@ -16,6 +16,7 @@ import {
   healthRouter,
   incomesRouter,
   tagsRouter,
+  transactionsRouter,
   usersRouter,
 } from "./modules";
 
@@ -104,6 +105,7 @@ export class Application {
     this.app.route("/incomes", incomesRouter);
     this.app.route("/expenses", expensesRouter);
     this.app.route("/budgets", budgetsRouter);
+    this.app.route("/transactions", transactionsRouter);
     this.app.route("/tags", tagsRouter);
     this.app.route("/banks", banksRouter);
   }
