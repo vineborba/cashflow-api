@@ -223,7 +223,7 @@ router.post(
   },
 );
 
-router.post("/logout", (c) => {
+router.post("/sign-out", (c) => {
   deleteCookie(c, "token", { path: "/" });
   return c.body(null, 204);
 });
