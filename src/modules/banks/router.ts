@@ -7,9 +7,14 @@ const router = new Hono<ServerContext>();
 
 router.get("/", async (c) => {
   const db = c.get("db");
-  const banksList = await db.select().from(banks);
+  const banksList = await db
+    .select({
+      code: banks.id,
+      name: banks.name,
+    })
+    .from(banks);
 
-  return c.json({ banks: banksList });
+  return c.json(banksList);
 });
 
 export default router;
