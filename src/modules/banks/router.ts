@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { asc } from "drizzle-orm";
 
 import { ServerContext } from "@app/types/global";
 import { banks } from "@app/db/schemas";
@@ -12,7 +13,8 @@ router.get("/", async (c) => {
       code: banks.id,
       name: banks.name,
     })
-    .from(banks);
+    .from(banks)
+    .orderBy(asc(banks.id));
 
   return c.json(banksList);
 });
