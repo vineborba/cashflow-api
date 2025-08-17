@@ -17,6 +17,7 @@ export type AppEnvironment = "test" | "development" | "production";
 
 export type ApplicationSettings = {
   environment: AppEnvironment;
+  corsOrigins: string | string[];
 };
 
 export type DatabaseSettings = {
@@ -46,6 +47,7 @@ export type Bindings = {
   SECRETS_JWT: string;
   SECRETS_NEW_ACCOUNT: string;
   SECRETS_RESET_PASSWORD: string;
+  CORS_ORIGINS: string;
 };
 
 export type ServerContext = {

@@ -3,6 +3,7 @@ import { logger } from "hono/logger";
 import { secureHeaders } from "hono/secure-headers";
 import { requestId } from "hono/request-id";
 import { jwt } from "hono/jwt";
+import { cors } from "hono/cors";
 
 import type { AppEnvironment, ServerContext } from "./types/global";
 import { connectDatabase } from "./db/client";
@@ -39,6 +40,9 @@ export class Application {
     this.app.use(async (c, next) => {
       const settings = {
         app: {
+          corsOrigins: c.env.CORS_ORIGINS.includes(",")
+            ? c.env.CORS_ORIGINS.split(",")
+            : c.env.CORS_ORIGINS,
           environment: (c.env.APP_ENVIRONMENT ||
             "development") as AppEnvironment,
         },
@@ -74,6 +78,15 @@ export class Application {
       c.set("newAccountSecret", settings.secrets.newAccount);
       c.set("devMode", settings.app.environment !== "production");
       await next();
+    });
+
+    this.app.use(async (c, next) => {
+      const settings = c.get("settings");
+      const corsMiddleware = cors({
+        origin: settings.app.corsOrigins,
+        credentials: true,
+      });
+      return corsMiddleware(c, next);
     });
 
     this.app.use(logger());
