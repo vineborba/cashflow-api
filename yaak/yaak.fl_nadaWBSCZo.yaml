@@ -1,0 +1,13 @@
+type: folder
+model: folder
+id: fl_nadaWBSCZo
+createdAt: 2025-08-17T15:17:54.940007674
+updatedAt: 2025-08-17T15:17:54.940009164
+workspaceId: wk_h5ZmgvKoMK
+folderId: null
+authentication: {}
+authenticationType: null
+description: ''
+headers: []
+name: users
+sortPriority: -1755443900000.0
