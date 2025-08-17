@@ -30,7 +30,7 @@ router.get("/me", async (c) => {
     throw new UnauthorizedException();
   }
 
-  return c.json({ data: userData });
+  return c.json(userData);
 });
 
 router
