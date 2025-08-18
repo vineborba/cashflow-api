@@ -40,9 +40,10 @@ export class Application {
     this.app.use(async (c, next) => {
       const settings = {
         app: {
-          corsOrigins: c.env.CORS_ORIGINS.includes(",")
-            ? c.env.CORS_ORIGINS.split(",")
-            : c.env.CORS_ORIGINS,
+          host: c.env.APP_HOST,
+          corsOrigins: c.env.APP_CORS_ORIGINS.includes(",")
+            ? c.env.APP_CORS_ORIGINS.split(",")
+            : c.env.APP_CORS_ORIGINS,
           environment: (c.env.APP_ENVIRONMENT ||
             "development") as AppEnvironment,
         },
