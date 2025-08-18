@@ -11,19 +11,19 @@
   },
   "dependencies": {
     "@hono/valibot-validator": "^0.5.3",
-    "@libsql/client": "^0.15.10",
+    "@libsql/client": "^0.15.11",
     "drizzle-orm": "^0.44.4",
     "drizzle-valibot": "^0.4.2",
-    "hono": "^4.8.11",
+    "hono": "^4.9.2",
     "ky": "^1.8.2",
     "tough-cookie": "^5.1.2",
     "valibot": "^1.1.0"
   },
   "devDependencies": {
-    "@types/node": "^24.1.0",
+    "@types/node": "^24.3.0",
     "drizzle-kit": "^0.31.4",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
-    "wrangler": "^4.4.0"
+    "wrangler": "^4.30.0"
   }
 }
