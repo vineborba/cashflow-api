@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_wHs46BdEjM
 createdAt: 2025-07-16T02:39:22.443069094
-updatedAt: 2025-07-16T02:40:13.284185480
+updatedAt: 2025-09-01T00:02:29.915850
 workspaceId: wk_h5ZmgvKoMK
 folderId: fl_vqrwjxgMbK
 authentication: {}
@@ -10,15 +10,15 @@ authenticationType: null
 body:
   text: |-
     {
-      "name": "Alimentação"
+      "name": "Educação"
     }
 bodyType: application/json
-description: ""
+description: ''
 headers:
-  - enabled: true
-    name: Content-Type
-    value: application/json
-    id: Hc30TmVrhc
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: Hc30TmVrhc
 method: POST
 name: Create tag
 sortPriority: -0.0002

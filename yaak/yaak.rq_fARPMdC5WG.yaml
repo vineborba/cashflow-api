@@ -1,0 +1,18 @@
+type: http_request
+model: http_request
+id: rq_fARPMdC5WG
+createdAt: 2025-08-31T23:35:55.509451
+updatedAt: 2025-08-31T23:36:18.868093
+workspaceId: wk_h5ZmgvKoMK
+folderId: fl_RTVBp4UFtj
+authentication: {}
+authenticationType: null
+body: {}
+bodyType: null
+description: ''
+headers: []
+method: GET
+name: List budgets
+sortPriority: -0.0002
+url: ${[ host ]}/budgets
+urlParameters: []

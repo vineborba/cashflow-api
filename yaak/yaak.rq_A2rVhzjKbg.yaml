@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_A2rVhzjKbg
 createdAt: 2025-07-16T03:18:19.955640094
-updatedAt: 2025-07-16T03:18:19.955640319
+updatedAt: 2025-09-02T01:47:32.942164
 workspaceId: wk_h5ZmgvKoMK
 folderId: fl_RTVBp4UFtj
 authentication: {}
@@ -10,17 +10,17 @@ authenticationType: null
 body:
   text: |-
     {
-      "name": "Alimentação",
-      "maxValue": 100000,
-      "tags": []
+      "name": "Geral",
+      "maxValue": 10000000,
+      "tags": ["9303e4ed-b7e3-4fca-8274-c53b726f9494", "a442cbc6-171e-4c7d-ba77-51b86580f38d"]
     }
 bodyType: application/json
-description: ""
+description: ''
 headers:
-  - enabled: true
-    name: Content-Type
-    value: application/json
-    id: Vdx2g9sZhs
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: Vdx2g9sZhs
 method: POST
 name: Create budget
 sortPriority: -0.0001
