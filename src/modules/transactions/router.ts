@@ -37,13 +37,12 @@ router
           userId: sub,
           ...transactionData,
         })
-        .returning({
-          id: transactions.id,
-        });
+        .returning();
 
+      let insertedTags: string[] = [];
       if (transactionTags.length) {
         const tagsAreValid = await tx
-          .select({ id: tags.id })
+          .select({ id: tags.id, name: tags.name })
           .from(tags)
           .where(and(eq(tags.userId, sub), inArray(tags.id, transactionTags)));
 
@@ -57,11 +56,18 @@ router
         }));
 
         await tx.insert(tagsToTransactions).values(pairs);
+
+        insertedTags = tagsAreValid.map((t) => t.name);
       }
 
       return {
         id: inserted.id,
-      };
+        date: inserted.date,
+        description: inserted.description,
+        type: inserted.type,
+        value: inserted.value,
+        tags: insertedTags,
+      } satisfies Transaction;
     });
 
     return c.json(insertedData, 201);
