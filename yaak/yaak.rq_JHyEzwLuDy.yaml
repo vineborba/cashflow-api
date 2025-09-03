@@ -2,18 +2,20 @@ type: http_request
 model: http_request
 id: rq_JHyEzwLuDy
 createdAt: 2025-07-16T03:10:52.224960603
-updatedAt: 2025-08-06T03:02:04.765920107
+updatedAt: 2025-09-03T03:44:06.051544
 workspaceId: wk_h5ZmgvKoMK
-folderId: fl_bnt4owzWzA
+folderId: fl_skLTidmYji
 authentication: {}
 authenticationType: null
 body:
   text: |-
     {
-      "value": 2000,
-      "description": "Cabelo cortado ",
-      "date": "2025-07-16T03:09:54.782Z",
-      "accountId": "¨:"
+      "value": 200000,
+      "description": "Salário 10",
+      "date": "${[ timestamp.iso8601() ]}",
+      "accountId": "3d08dd2c-84af-4c1c-9449-a7990b9e220a",
+      "type": "income",
+      "tags": ["12615888-2561-45ba-bfd7-e57dd0117af0"]
     }
 bodyType: application/json
 description: ''
@@ -23,7 +25,7 @@ headers:
   value: application/json
   id: iIjVdR04GN
 method: POST
-name: Create income
+name: Create transaction
 sortPriority: 1000.0
-url: ${[ host ]}/incomes
+url: ${[ host ]}/transactions
 urlParameters: []

@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_dJDS2ds6Mq
 createdAt: 2025-08-09T00:16:28.077647248
-updatedAt: 2025-08-09T00:16:39.869845240
+updatedAt: 2025-09-03T04:01:29.481606
 workspaceId: wk_h5ZmgvKoMK
 folderId: fl_skLTidmYji
 authentication: {}
@@ -13,6 +13,22 @@ description: ''
 headers: []
 method: GET
 name: List transactions
-sortPriority: -0.0002
+sortPriority: 0.0
 url: ${[ host ]}/transactions
-urlParameters: []
+urlParameters:
+- enabled: true
+  name: tag
+  value: ''
+  id: ZhdJMY7ZYc
+- enabled: true
+  name: description
+  value: ''
+  id: ei5fMCvuxA
+- enabled: true
+  name: type
+  value: ''
+  id: gJvzTgqTVJ
+- enabled: true
+  name: ''
+  value: ''
+  id: Pxx86GGJcJ
