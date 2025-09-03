@@ -2,8 +2,7 @@ import { primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 import { tags } from "./tags.schema";
 import { budgets } from "./budgets.schema";
-import { expenses } from "./expense.schema";
-import { incomes } from "./income.schema";
+import { transactions } from "./transactions.schema";
 
 export const tagsToBudgets = sqliteTable(
   "tags_to_budgets",
@@ -18,28 +17,15 @@ export const tagsToBudgets = sqliteTable(
   (table) => [primaryKey({ columns: [table.budgetId, table.tagId] })],
 );
 
-export const tagsToExpenses = sqliteTable(
-  "tags_to_expenses",
+export const tagsToTransactions = sqliteTable(
+  "tags_to_transactions",
   {
     tagId: text()
       .notNull()
       .references(() => tags.id),
-    expenseId: text()
+    transactionId: text()
       .notNull()
-      .references(() => expenses.id),
+      .references(() => transactions.id),
   },
-  (table) => [primaryKey({ columns: [table.expenseId, table.tagId] })],
-);
-
-export const tagsToIncomes = sqliteTable(
-  "tags_to_incomes",
-  {
-    tagId: text()
-      .notNull()
-      .references(() => tags.id),
-    incomeId: text()
-      .notNull()
-      .references(() => incomes.id),
-  },
-  (table) => [primaryKey({ columns: [table.incomeId, table.tagId] })],
+  (table) => [primaryKey({ columns: [table.transactionId, table.tagId] })],
 );

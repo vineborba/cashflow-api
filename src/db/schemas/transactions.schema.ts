@@ -6,10 +6,10 @@ import { idField, timestamps } from "./helpers";
 import { users } from "./user.schema";
 import { accounts } from "./accounts.schema";
 
-export const expenses = sqliteTable("expenses", {
+export const transactions = sqliteTable("transactions", {
   ...idField,
+  type: text({ mode: "text" }).notNull(),
   value: int().notNull(),
-  paid: int({ mode: "boolean" }).notNull().default(true),
   description: text({ length: 120 }).notNull(),
   observation: text({ length: 180 }),
   date: int({ mode: "timestamp" }).notNull(),
@@ -22,7 +22,12 @@ export const expenses = sqliteTable("expenses", {
   ...timestamps,
 });
 
-export const insertExpenseSchema = createInsertSchema(expenses, {
+export const insertTransactionSchema = createInsertSchema(transactions, {
+  type: (schema) =>
+    v.pipe(
+      schema,
+      v.picklist(["income", "expense"], "Tipo deve ser 'income' ou 'expense'"),
+    ),
   value: (schema) =>
     v.pipe(schema, v.minValue(1, "Precisa ser maior que zero")),
   description: (schema) =>

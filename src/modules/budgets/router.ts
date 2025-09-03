@@ -1,15 +1,15 @@
 import { Hono } from "hono";
 import { vValidator } from "@hono/valibot-validator";
-import { and, between, eq, gte, inArray } from "drizzle-orm";
+import { and, between, eq, inArray } from "drizzle-orm";
 import { startOfMonth, endOfMonth } from "date-fns";
 
 import type { ServerContext } from "@app/types/global";
 import {
   budgets,
-  expenses,
+  transactions,
   tags,
   tagsToBudgets,
-  tagsToExpenses,
+  tagsToTransactions,
 } from "@app/db/schemas";
 
 import { newBudgetSchema } from "./schema";
@@ -71,14 +71,18 @@ router
     });
 
     const budgetExpenses = await db
-      .select({ amount: expenses.value })
-      .from(expenses)
-      .innerJoin(tagsToExpenses, eq(expenses.id, tagsToExpenses.expenseId))
+      .select({ amount: transactions.value })
+      .from(transactions)
+      .innerJoin(
+        tagsToTransactions,
+        eq(transactions.id, tagsToTransactions.transactionId),
+      )
       .where(
         and(
-          inArray(tagsToExpenses.tagId, budgetTags),
+          eq(transactions.type, "expense"),
+          inArray(tagsToTransactions.tagId, budgetTags),
           between(
-            expenses.date,
+            transactions.date,
             startOfMonth(new Date()),
             endOfMonth(new Date()),
           ),
@@ -105,20 +109,21 @@ router
           maxValue: budgets.maxValue,
         },
         expenses: {
-          id: expenses.id,
-          amount: expenses.value,
+          id: transactions.id,
+          amount: transactions.value,
         },
       })
       .from(budgets)
       .leftJoin(tagsToBudgets, eq(budgets.id, tagsToBudgets.budgetId))
       .leftJoin(tags, eq(tags.id, tagsToBudgets.tagId))
-      .leftJoin(tagsToExpenses, eq(tags.id, tagsToExpenses.tagId))
+      .leftJoin(tagsToTransactions, eq(tags.id, tagsToTransactions.tagId))
       .leftJoin(
-        expenses,
+        transactions,
         and(
-          eq(tagsToExpenses.expenseId, expenses.id),
+          eq(tagsToTransactions.transactionId, transactions.id),
+          eq(transactions.type, "expense"),
           between(
-            expenses.date,
+            transactions.date,
             startOfMonth(new Date()),
             endOfMonth(new Date()),
           ),

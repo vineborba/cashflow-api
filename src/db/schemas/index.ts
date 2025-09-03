@@ -1,6 +1,5 @@
 export { banks } from "./banks.schema";
-export { expenses } from "./expense.schema";
-export { incomes } from "./income.schema";
+export { transactions } from "./transactions.schema";
 export { users } from "./user.schema";
 export { tags } from "./tags.schema";
 export { budgets } from "./budgets.schema";

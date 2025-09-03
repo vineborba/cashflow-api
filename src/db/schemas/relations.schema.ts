@@ -1,20 +1,14 @@
 import { relations } from "drizzle-orm/relations";
 
-import { expenses } from "./expense.schema";
-import { incomes } from "./income.schema";
+import { transactions } from "./transactions.schema";
 import { users } from "./user.schema";
 import { budgets } from "./budgets.schema";
 import { tags } from "./tags.schema";
-import {
-  tagsToBudgets,
-  tagsToExpenses,
-  tagsToIncomes,
-} from "./tags-to-others.schema";
+import { tagsToBudgets, tagsToTransactions } from "./tags-to-others.schema";
 import { accounts } from "./accounts.schema";
 
 export const usersRelations = relations(users, ({ many }) => ({
-  incomes: many(incomes),
-  expenses: many(expenses),
+  transactions: many(transactions),
   tags: many(tags),
   accounts: many(accounts),
 }));
@@ -24,33 +18,23 @@ export const accountsRelation = relations(accounts, ({ one, many }) => ({
     fields: [accounts.userId],
     references: [users.id],
   }),
-  expenses: many(expenses),
-  incomes: many(incomes),
+  transactions: many(transactions),
 }));
 
-export const expensesRelations = relations(expenses, ({ one, many }) => ({
-  user: one(users, {
-    fields: [expenses.userId],
-    references: [users.id],
+export const transactionsRelations = relations(
+  transactions,
+  ({ one, many }) => ({
+    user: one(users, {
+      fields: [transactions.userId],
+      references: [users.id],
+    }),
+    tags: many(tagsToTransactions),
+    account: one(accounts, {
+      fields: [transactions.accountId],
+      references: [accounts.id],
+    }),
   }),
-  tags: many(tagsToExpenses),
-  account: one(accounts, {
-    fields: [expenses.accountId],
-    references: [accounts.id],
-  }),
-}));
-
-export const incomesRelations = relations(incomes, ({ one, many }) => ({
-  user: one(users, {
-    fields: [incomes.userId],
-    references: [users.id],
-  }),
-  tags: many(tagsToIncomes),
-  account: one(accounts, {
-    fields: [incomes.accountId],
-    references: [accounts.id],
-  }),
-}));
+);
 
 export const budgetsRelations = relations(budgets, ({ one, many }) => ({
   user: one(users, {
@@ -66,8 +50,7 @@ export const tagsRelations = relations(tags, ({ one, many }) => ({
     references: [users.id],
   }),
   budgets: many(tagsToBudgets),
-  incomes: many(tagsToIncomes),
-  expenses: many(tagsToExpenses),
+  transactions: many(tagsToTransactions),
 }));
 
 export const tagsToBudgetsRelations = relations(tagsToBudgets, ({ one }) => ({
@@ -81,24 +64,16 @@ export const tagsToBudgetsRelations = relations(tagsToBudgets, ({ one }) => ({
   }),
 }));
 
-export const tagsToExpensesRelations = relations(tagsToExpenses, ({ one }) => ({
-  budget: one(budgets, {
-    fields: [tagsToExpenses.expenseId],
-    references: [budgets.id],
+export const tagsToTransactionsRelations = relations(
+  tagsToTransactions,
+  ({ one }) => ({
+    transaction: one(transactions, {
+      fields: [tagsToTransactions.transactionId],
+      references: [transactions.id],
+    }),
+    tag: one(tags, {
+      fields: [tagsToTransactions.tagId],
+      references: [tags.id],
+    }),
   }),
-  tag: one(tags, {
-    fields: [tagsToExpenses.tagId],
-    references: [tags.id],
-  }),
-}));
-
-export const tagsToIncomesRelations = relations(tagsToIncomes, ({ one }) => ({
-  budget: one(budgets, {
-    fields: [tagsToIncomes.incomeId],
-    references: [budgets.id],
-  }),
-  tag: one(tags, {
-    fields: [tagsToIncomes.tagId],
-    references: [tags.id],
-  }),
-}));
+);
