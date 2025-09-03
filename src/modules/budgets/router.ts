@@ -42,7 +42,6 @@ router
         })
         .returning();
 
-      let insertedTags: string[] = [];
       if (budgetTags.length) {
         const tagsAreValid = await tx
           .select({ name: tags.name })
@@ -59,7 +58,6 @@ router
         }));
 
         await tx.insert(tagsToBudgets).values(pairs);
-        insertedTags = tagsAreValid.map((t) => t.name);
       }
 
       return {
