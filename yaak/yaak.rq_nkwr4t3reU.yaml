@@ -2,25 +2,25 @@ type: http_request
 model: http_request
 id: rq_nkwr4t3reU
 createdAt: 2025-07-16T02:45:18.932210686
-updatedAt: 2025-07-16T02:45:52.923898187
+updatedAt: 2025-09-05T03:55:02.265639
 workspaceId: wk_h5ZmgvKoMK
 folderId: fl_vqrwjxgMbK
 authentication: {}
 authenticationType: null
 body: {}
 bodyType: null
-description: ""
+description: ''
 headers: []
 method: DELETE
 name: Delete tag
 sortPriority: -0.0002
 url: ${[ host ]}/tags/:id
 urlParameters:
-  - enabled: true
-    name: :id
-    value: 89d64303-a5f2-4801-bf40-7ce63185d160
-    id: ivigsgzQ2k
-  - enabled: true
-    name: ""
-    value: ""
-    id: i933a3puTb
+- enabled: true
+  name: :id
+  value: 29e8c9ed-c665-4bbb-b540-fbcd6b77ad5c
+  id: ivigsgzQ2k
+- enabled: true
+  name: ''
+  value: ''
+  id: G7U7bIfBzi

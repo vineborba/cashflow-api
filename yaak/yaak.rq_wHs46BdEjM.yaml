@@ -2,7 +2,7 @@ type: http_request
 model: http_request
 id: rq_wHs46BdEjM
 createdAt: 2025-07-16T02:39:22.443069094
-updatedAt: 2025-09-03T03:41:41.213455
+updatedAt: 2025-09-05T03:54:47.428613
 workspaceId: wk_h5ZmgvKoMK
 folderId: fl_vqrwjxgMbK
 authentication: {}
@@ -10,7 +10,7 @@ authenticationType: null
 body:
   text: |-
     {
-      "name": "Salário"
+      "name": "Streaming"
     }
 bodyType: application/json
 description: ''
