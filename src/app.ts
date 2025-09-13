@@ -8,6 +8,7 @@ import { cors } from "hono/cors";
 import type { AppEnvironment, ServerContext } from "./types/global";
 import { connectDatabase } from "./db/client";
 import { EmailClient } from "./lib/email/client";
+import constants from "./shared/constants";
 import {
   accountsRouter,
   authRouter,
@@ -84,6 +85,10 @@ export class Application {
       const corsMiddleware = cors({
         origin: settings.app.corsOrigins,
         credentials: true,
+        exposeHeaders: [
+          constants.HEADERS.TOTAL_COUNT,
+          constants.HEADERS.TOTAL_PAGES,
+        ],
       });
       return corsMiddleware(c, next);
     });

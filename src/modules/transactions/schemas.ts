@@ -1,6 +1,7 @@
 import * as v from "valibot";
 
 import { insertTransactionSchema } from "@app/db/schemas/transactions.schema";
+import { paginationSchema } from "@app/shared/schema";
 
 export const newTransactionSchema = v.object({
   type: insertTransactionSchema.entries.type,
@@ -20,6 +21,7 @@ export const newTransactionSchema = v.object({
 });
 
 export const transactionQuerySchema = v.object({
+  ...paginationSchema.entries,
   description: v.optional(
     v.union([
       v.literal(""),

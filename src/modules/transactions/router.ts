@@ -1,10 +1,11 @@
-import { and, desc, eq, isNull, like, inArray } from "drizzle-orm";
+import { and, desc, eq, isNull, like, inArray, count } from "drizzle-orm";
 import { Hono } from "hono";
 import { vValidator } from "@hono/valibot-validator";
 import { HTTPException } from "hono/http-exception";
 
 import { transactions, tagsToTransactions, tags } from "@app/db/schemas";
 import { idSchema } from "@app/shared/schema";
+import constants from "@app/shared/constants";
 import { ServerContext } from "@app/types/global";
 
 import { newTransactionSchema, transactionQuerySchema } from "./schemas";
@@ -75,7 +76,7 @@ router
   .get(vValidator("query", transactionQuerySchema), async (c) => {
     const db = c.get("db");
     const { sub } = c.get("jwtPayload");
-    const { description, tag, type } = c.req.valid("query");
+    const { description, tag, type, page, limit } = c.req.valid("query");
 
     const whereConditions = [
       eq(transactions.userId, sub),
@@ -91,6 +92,7 @@ router
     }
 
     let paginatedTransactions;
+    let countQuery;
 
     if (tag) {
       paginatedTransactions = db
@@ -109,8 +111,19 @@ router
         .innerJoin(tags, eq(tags.id, tagsToTransactions.tagId))
         .where(and(...whereConditions, eq(tags.id, tag)))
         .orderBy(desc(transactions.date))
-        .limit(15)
+        .limit(limit)
+        .offset(page * limit)
         .as("transactions");
+      countQuery = db
+        .select({ total: count() })
+        .from(transactions)
+        .innerJoin(
+          tagsToTransactions,
+          eq(tagsToTransactions.transactionId, transactions.id),
+        )
+        .innerJoin(tags, eq(tags.id, tagsToTransactions.tagId))
+        .groupBy(transactions.id)
+        .where(and(...whereConditions, eq(tags.id, tag)));
     } else {
       paginatedTransactions = db
         .select({
@@ -123,8 +136,13 @@ router
         .from(transactions)
         .where(and(...whereConditions))
         .orderBy(desc(transactions.date))
-        .limit(15)
+        .limit(limit)
+        .offset(page * limit)
         .as("transactions");
+      countQuery = db
+        .select({ total: count() })
+        .from(transactions)
+        .where(and(...whereConditions));
     }
 
     const query = db
@@ -143,7 +161,10 @@ router
       )
       .leftJoin(tags, eq(tags.id, tagsToTransactions.tagId));
 
-    const userTransactions = await query;
+    const [userTransactions, [{ total }]] = await Promise.all([
+      query,
+      countQuery,
+    ]);
 
     const aggregatedData = userTransactions.reduce((acc, curr) => {
       const { tag, ...transaction } = curr;
@@ -156,6 +177,9 @@ router
       }
       return acc;
     }, new Map<string, Transaction>());
+
+    c.header(constants.HEADERS.TOTAL_COUNT, String(total));
+    c.header(constants.HEADERS.TOTAL_PAGES, String(Math.ceil(total / limit)));
 
     return c.json(aggregatedData.values().toArray());
   });

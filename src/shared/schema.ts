@@ -14,8 +14,8 @@ export const paginationSchema = v.object({
     v.decimal(),
     v.transform(Number),
     v.integer(),
-    v.transform((v) => v - 1),
     v.minValue(1),
+    v.transform((v) => v - 1),
   ),
 });
 
