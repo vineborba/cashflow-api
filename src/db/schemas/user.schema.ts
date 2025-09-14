@@ -1,4 +1,4 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-valibot";
 import * as v from "valibot";
 
@@ -9,8 +9,8 @@ export const users = sqliteTable("users", {
   name: text({ length: 120 }).notNull(),
   email: text({ length: 120 }).notNull(),
   password: text().notNull(),
-  verified: int({ mode: "boolean" }).default(false),
-  termsAcceptedAt: int({ mode: "timestamp" })
+  verified: integer({ mode: "boolean" }).default(false),
+  termsAcceptedAt: integer({ mode: "timestamp" })
     .$defaultFn(() => new Date())
     .notNull(),
   ...timestamps,

@@ -21,7 +21,7 @@ export const accounts = sqliteTable("accounts", {
 export const insertAccountSchema = createInsertSchema(accounts, {
   balance: (schema) =>
     v.pipe(
-      schema,
+      v.number(),
       v.transform((val) => Math.floor(val * 100)),
     ),
   description: (schema) => v.pipe(schema, v.nonEmpty()),

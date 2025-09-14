@@ -1,4 +1,4 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema } from "drizzle-valibot";
 import * as v from "valibot";
 
@@ -9,10 +9,10 @@ import { accounts } from "./accounts.schema";
 export const transactions = sqliteTable("transactions", {
   ...idField,
   type: text({ mode: "text" }).notNull(),
-  value: int().notNull(),
+  value: integer().notNull(),
   description: text({ length: 120 }).notNull(),
   observation: text({ length: 180 }),
-  date: int({ mode: "timestamp" }).notNull(),
+  date: integer({ mode: "timestamp" }).notNull(),
   userId: text()
     .notNull()
     .references(() => users.id),
@@ -30,9 +30,9 @@ export const insertTransactionSchema = createInsertSchema(transactions, {
     ),
   value: (schema) =>
     v.pipe(
-      schema,
-      v.minValue(1, "Precisa ser maior que zero"),
+      v.number(),
       v.transform((val) => Math.floor(val * 100)),
+      v.minValue(1, "Precisa ser maior que zero"),
     ),
   description: (schema) =>
     v.pipe(

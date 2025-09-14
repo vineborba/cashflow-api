@@ -1,4 +1,4 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema } from "drizzle-valibot";
 import * as v from "valibot";
 
@@ -9,7 +9,7 @@ export const budgets = sqliteTable("budgets", {
   ...idField,
   ...timestamps,
   name: text({ length: 60 }).notNull(),
-  maxValue: int().notNull(),
+  maxValue: integer().notNull(),
   userId: text()
     .notNull()
     .references(() => users.id),
