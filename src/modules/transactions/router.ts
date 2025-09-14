@@ -1,9 +1,14 @@
-import { and, desc, eq, isNull, like, inArray, count } from "drizzle-orm";
+import { and, desc, eq, isNull, like, inArray, count, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { vValidator } from "@hono/valibot-validator";
 import { HTTPException } from "hono/http-exception";
 
-import { transactions, tagsToTransactions, tags } from "@app/db/schemas";
+import {
+  transactions,
+  tagsToTransactions,
+  tags,
+  accounts,
+} from "@app/db/schemas";
 import { idSchema } from "@app/shared/schema";
 import constants from "@app/shared/constants";
 import { ServerContext } from "@app/types/global";
@@ -60,6 +65,16 @@ router
 
         insertedTags = tagsAreValid.map((t) => t.name);
       }
+
+      const value =
+        transactionData.type === "income"
+          ? transactionData.value
+          : -transactionData.value;
+
+      await tx
+        .update(accounts)
+        .set({ balance: sql`${accounts.balance} + ${value}` })
+        .where(eq(accounts.id, transactionData.accountId));
 
       return {
         id: inserted.id,

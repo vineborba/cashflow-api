@@ -29,7 +29,11 @@ export const insertTransactionSchema = createInsertSchema(transactions, {
       v.picklist(["income", "expense"], "Tipo deve ser 'income' ou 'expense'"),
     ),
   value: (schema) =>
-    v.pipe(schema, v.minValue(1, "Precisa ser maior que zero")),
+    v.pipe(
+      schema,
+      v.minValue(1, "Precisa ser maior que zero"),
+      v.transform((val) => Math.floor(val * 100)),
+    ),
   description: (schema) =>
     v.pipe(
       schema,
