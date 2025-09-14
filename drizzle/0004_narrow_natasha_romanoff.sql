@@ -1,0 +1,1 @@
+ALTER TABLE `accounts` ALTER COLUMN "description" TO "description" text(250) NOT NULL;
