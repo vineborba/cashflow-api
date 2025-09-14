@@ -1,7 +1,18 @@
-import { and, desc, eq, isNull, like, inArray, count, sql } from "drizzle-orm";
+import {
+  and,
+  desc,
+  eq,
+  isNull,
+  like,
+  inArray,
+  count,
+  sql,
+  gte,
+} from "drizzle-orm";
 import { Hono } from "hono";
 import { vValidator } from "@hono/valibot-validator";
 import { HTTPException } from "hono/http-exception";
+import { subDays } from "date-fns";
 
 import {
   transactions,
@@ -91,7 +102,7 @@ router
   .get(vValidator("query", transactionQuerySchema), async (c) => {
     const db = c.get("db");
     const { sub } = c.get("jwtPayload");
-    const { description, tag, type, page, limit } = c.req.valid("query");
+    const { description, tag, type, page, limit, range } = c.req.valid("query");
 
     const whereConditions = [
       eq(transactions.userId, sub),
@@ -104,6 +115,11 @@ router
 
     if (type) {
       whereConditions.push(eq(transactions.type, type));
+    }
+
+    if (range) {
+      const date = subDays(new Date(), range);
+      whereConditions.push(gte(transactions.date, date));
     }
 
     let paginatedTransactions;

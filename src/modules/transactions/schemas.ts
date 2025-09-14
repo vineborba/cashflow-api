@@ -50,4 +50,10 @@ export const transactionQuerySchema = v.object({
       ),
     ]),
   ),
+  range: v.optional(
+    v.union([
+      v.literal(""),
+      v.pipe(v.string(), v.decimal(), v.transform(Number)),
+    ]),
+  ),
 });
