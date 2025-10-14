@@ -232,4 +232,47 @@ router.get("/:id", vValidator("param", idSchema), async (c) => {
   return c.json(transaction);
 });
 
+router.delete("/:id", vValidator("param", idSchema), async (c) => {
+  const db = c.get("db");
+  const { sub } = c.get("jwtPayload");
+  const { id: transactionId } = c.req.valid("param");
+
+  await db.transaction(async (tx) => {
+    const [transaction] = await tx
+      .select({
+        type: transactions.type,
+        value: transactions.value,
+        accountId: transactions.accountId,
+      })
+      .from(transactions)
+      .where(
+        and(eq(transactions.id, transactionId), eq(transactions.userId, sub)),
+      );
+
+    if (!transaction) {
+      return;
+    }
+
+    await tx
+      .delete(tagsToTransactions)
+      .where(eq(tagsToTransactions.transactionId, transactionId));
+
+    await tx
+      .delete(transactions)
+      .where(
+        and(eq(transactions.id, transactionId), eq(transactions.userId, sub)),
+      );
+
+    const valueToReverse =
+      transaction.type === "income" ? -transaction.value : transaction.value;
+
+    await tx
+      .update(accounts)
+      .set({ balance: sql`${accounts.balance} + ${valueToReverse}` })
+      .where(eq(accounts.id, transaction.accountId));
+  });
+
+  return c.body(null, 204);
+});
+
 export default router;

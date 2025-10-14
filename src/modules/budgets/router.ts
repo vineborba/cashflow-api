@@ -11,6 +11,7 @@ import {
   tagsToBudgets,
   tagsToTransactions,
 } from "@app/db/schemas";
+import { idSchema } from "@app/shared/schema";
 
 import { newBudgetSchema } from "./schema";
 import { InvalidBudgetTags } from "./exception";
@@ -144,5 +145,21 @@ router
 
     return c.json(aggregatedData.values().toArray());
   });
+
+router.delete("/:id", vValidator("param", idSchema), async (c) => {
+  const db = c.get("db");
+  const { sub } = c.get("jwtPayload");
+  const { id: budgetId } = c.req.valid("param");
+
+  await db.transaction(async (tx) => {
+    await tx.delete(tagsToBudgets).where(eq(tagsToBudgets.budgetId, budgetId));
+
+    await tx
+      .delete(budgets)
+      .where(and(eq(budgets.id, budgetId), eq(budgets.userId, sub)));
+  });
+
+  return c.body(null, 204);
+});
 
 export default router;
