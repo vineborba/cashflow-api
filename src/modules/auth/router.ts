@@ -6,6 +6,7 @@ import { deleteCookie, setCookie } from "hono/cookie";
 
 import * as auth from "@app/lib/auth";
 import { users } from "@app/db/schemas/user.schema";
+import { tags } from "@app/db/schemas/tags.schema";
 import type { ServerContext } from "@app/types/global";
 
 import {
@@ -21,6 +22,21 @@ import {
   UnauthorizedException,
   UnverifiedUserException,
 } from "./exceptions";
+
+// Create default tags for the new user
+const DEFAULT_TAGS = [
+  "Alimentação",
+  "Carro",
+  "Educação",
+  "Salário",
+  "Transporte",
+  "Saúde",
+  "Moradia",
+  "Lazer",
+  "Serviços",
+  "Outros",
+  "Streaming",
+];
 
 const router = new Hono<ServerContext>();
 
@@ -97,6 +113,13 @@ router.post("/sign-up", vValidator("json", signUpSchema), async (c) => {
       email: users.email,
       id: users.id,
     });
+
+  await client.insert(tags).values(
+    DEFAULT_TAGS.map((tagName) => ({
+      name: tagName,
+      userId: inserted.id,
+    })),
+  );
 
   const token = await sign(
     {
