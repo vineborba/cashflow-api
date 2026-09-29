@@ -1,0 +1,11 @@
+APP_HOST=http://localhost:5173
+APP_CORS_ORIGINS=http://localhost:5173
+APP_ENVIRONMENT=development
+DB_URL=http://127.0.0.1:8080
+DB_AUTH_TOKEN=
+EMAIL_HOST=
+EMAIL_KEY=
+EMAIL_SENDER=
+SECRETS_JWT=change-me
+SECRETS_NEW_ACCOUNT=change-me-too
+SECRETS_RESET_PASSWORD=change-me-as-well
